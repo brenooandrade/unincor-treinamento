@@ -1,0 +1,22 @@
+{
+  "name": "digifixsyncdata",
+  "version": "1.0.0",
+  "description": "Digifix - SyncData",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Breno Novais Andrade",
+  "license": "Digifix",
+  "devDependencies": {
+    "serverless-offline": "^13.2.0"
+  },
+  "dependencies": {
+    "mysql": "^2.18.1",
+    "mysql2": "^3.6.2",
+    "serverless-mysql": "^1.5.4",
+    "serverless-stage-manager": "^1.0.5",
+    "sodium-native": "^3.2.1",
+    "validator": "^13.5.2"
+  }
+}

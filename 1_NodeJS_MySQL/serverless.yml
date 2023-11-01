@@ -1,0 +1,60 @@
+service: digifixsyncdata
+
+plugins:
+  - serverless-offline
+  - serverless-stage-manager
+
+frameworkVersion: '3.35.2'
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+  stage: ${opt:stage, 'dev'}
+  lambdaHashingVersion: 20201221
+
+  # Environment Variables
+  environment:
+    MYSQL_HOST: ${self:custom.mysqlHost.${self:provider.stage}}
+    MYSQL_USER: ${self:custom.mysqlUser.${self:provider.stage}}
+    MYSQL_PASSWORD: ${self:custom.mysqlPassword.${self:provider.stage}}
+    MYSQL_DATABASE: ${self:custom.mysqlDatabase.${self:provider.stage}}
+    MYSQL_PORT: ${self:custom.mysqlPort.${self:provider.stage}}
+
+# Custom Variables
+custom:
+  stages:
+    - dev
+    - prod
+  mysqlHost:
+    dev: 127.0.0.1
+    prod: XXXX
+  mysqlUser:
+    dev: breno
+    prod: XXXX
+  mysqlPassword:
+    dev: password
+    prod: XXXX
+  mysqlDatabase:
+    dev: employees
+    prod: XXXX
+  mysqlPort:
+    dev: '3306'
+    prod: '3306'  
+
+functions:
+  syncdata:
+    handler: handler.abresql
+    events:
+      - http:
+          path: abresql
+          method: post
+          cors:
+            origin: '*' # <-- Origens permitidas
+            headers: # <-- Cabeçalhos customizados
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+            allowCredentials: false
