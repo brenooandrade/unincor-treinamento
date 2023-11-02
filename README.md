@@ -19,7 +19,7 @@ Etapa 2 - Criando API:
      https://www.serverless.com/framework/docs/providers/aws/cli-reference/create/
   - Instalar dependências -> npm install
   - Configurar serverless para apontar para conta AWS desejada -> https://www.serverless.com/framework/docs/providers/aws/cli-reference/config-credentials
-    ```serverless config credentials --provider AWS --key AKIAV7VSAXYFXB4ACLYE --secret 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```
+    ```serverless config credentials --provider AWS --key XXXXXXXX --secret XXXXXXXXXXXX```
   - Testes locais
     ```serverless offline -s dev```
   - Deploy em produção
@@ -79,14 +79,14 @@ Etapa 4 - Publicando no S3:
   ```
   Clique em “Política de Bucket” e cole a seguinte política, que permite acesso público ao conteúdo do seu bucket:
   {
-      "Versão": "17/10/2012",
-      "Declaração": [
+      "Version": "2012-10-17",
+      "Statement": [
           {
               "Sid": "PublicReadGetObject",
-              "Efeito": "Permitir",
-              "Diretor": "*",
-              "Ação": "s3:GetObject",
-              "Recurso": "arn:aws:s3:::react-demo-test-breno/*"
+              "Effect": "Allow",
+              "Principal": "*",
+              "Action": "s3:GetObject",
+              "Resource": "arn:aws:s3:::react-demo-test-breno/*"
           }
       ]
   }
