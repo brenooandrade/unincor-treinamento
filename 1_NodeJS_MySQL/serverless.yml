@@ -1,4 +1,4 @@
-service: digifixsyncdata
+service: abresqldemo
 
 plugins:
   - serverless-offline
@@ -27,16 +27,16 @@ custom:
     - prod
   mysqlHost:
     dev: 127.0.0.1
-    prod: XXXX
+    prod: ec2-54-234-139-140.compute-1.amazonaws.com
   mysqlUser:
     dev: breno
-    prod: XXXX
+    prod: breno
   mysqlPassword:
     dev: password
-    prod: XXXX
+    prod: password
   mysqlDatabase:
     dev: employees
-    prod: XXXX
+    prod: employees
   mysqlPort:
     dev: '3306'
     prod: '3306'  
@@ -51,6 +51,7 @@ functions:
           cors:
             origin: '*' # <-- Origens permitidas
             headers: # <-- Cabeçalhos customizados
+              - Access-Control-Allow-Origin
               - Content-Type
               - X-Amz-Date
               - Authorization

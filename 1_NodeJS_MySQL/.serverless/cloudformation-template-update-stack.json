@@ -74,7 +74,7 @@
     "SyncdataLogGroup": {
       "Type": "AWS::Logs::LogGroup",
       "Properties": {
-        "LogGroupName": "/aws/lambda/digifixsyncdata-prod-syncdata"
+        "LogGroupName": "/aws/lambda/abresqldemo-prod-syncdata"
       }
     },
     "IamRoleLambdaExecution": {
@@ -102,7 +102,7 @@
               "Fn::Join": [
                 "-",
                 [
-                  "digifixsyncdata",
+                  "abresqldemo",
                   "prod",
                   "lambda"
                 ]
@@ -120,7 +120,7 @@
                   ],
                   "Resource": [
                     {
-                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/digifixsyncdata-prod*:*"
+                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/abresqldemo-prod*:*"
                     }
                   ]
                 },
@@ -131,7 +131,7 @@
                   ],
                   "Resource": [
                     {
-                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/digifixsyncdata-prod*:*:*"
+                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/abresqldemo-prod*:*:*"
                     }
                   ]
                 }
@@ -144,7 +144,7 @@
           "Fn::Join": [
             "-",
             [
-              "digifixsyncdata",
+              "abresqldemo",
               "prod",
               {
                 "Ref": "AWS::Region"
@@ -162,19 +162,19 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/digifixsyncdata/prod/1697138768473-2023-10-12T19:26:08.473Z/digifixsyncdata.zip"
+          "S3Key": "serverless/abresqldemo/prod/1698882187429-2023-11-01T23:43:07.429Z/abresqldemo.zip"
         },
-        "Handler": "handler.syncdata",
+        "Handler": "handler.abresql",
         "Runtime": "nodejs16.x",
-        "FunctionName": "digifixsyncdata-prod-syncdata",
+        "FunctionName": "abresqldemo-prod-syncdata",
         "MemorySize": 1024,
         "Timeout": 6,
         "Environment": {
           "Variables": {
-            "MYSQL_HOST": "digifix-bd.cohxll6hm17s.us-east-1.rds.amazonaws.com",
-            "MYSQL_USER": "searchcloud",
-            "MYSQL_PASSWORD": "m|foEd|L)-Uh",
-            "MYSQL_DATABASE": "searchcloudprod",
+            "MYSQL_HOST": "ec2-54-234-139-140.compute-1.amazonaws.com",
+            "MYSQL_USER": "breno",
+            "MYSQL_PASSWORD": "password",
+            "MYSQL_DATABASE": "employees",
             "MYSQL_PORT": "3306"
           }
         },
@@ -189,20 +189,20 @@
         "SyncdataLogGroup"
       ]
     },
-    "SyncdataLambdaVersionBqStXqU7I2LJcAoOgt3ubNgYVPuNEJ1d1cDPTZs240": {
+    "SyncdataLambdaVersionGivXYxQIQIzx88jlxwJWgF2g3PYHVRvBc0T1fGUvsog": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "SyncdataLambdaFunction"
         },
-        "CodeSha256": "zNFoxImDIcZLVNOf9YfZ718QhFmJVrzBtWfFC7C8OC4="
+        "CodeSha256": "NZoMXoAJ3m3eRnaNaSz4wBKTnL7T1MSzvhzmdiFvLi0="
       }
     },
     "ApiGatewayRestApi": {
       "Type": "AWS::ApiGateway::RestApi",
       "Properties": {
-        "Name": "prod-digifixsyncdata",
+        "Name": "prod-abresqldemo",
         "EndpointConfiguration": {
           "Types": [
             "EDGE"
@@ -211,7 +211,7 @@
         "Policy": ""
       }
     },
-    "ApiGatewayResourceSyncdata": {
+    "ApiGatewayResourceAbresql": {
       "Type": "AWS::ApiGateway::Resource",
       "Properties": {
         "ParentId": {
@@ -220,13 +220,13 @@
             "RootResourceId"
           ]
         },
-        "PathPart": "syncdata",
+        "PathPart": "abresql",
         "RestApiId": {
           "Ref": "ApiGatewayRestApi"
         }
       }
     },
-    "ApiGatewayMethodSyncdataOptions": {
+    "ApiGatewayMethodAbresqlOptions": {
       "Type": "AWS::ApiGateway::Method",
       "Properties": {
         "AuthorizationType": "NONE",
@@ -254,7 +254,7 @@
               "StatusCode": "200",
               "ResponseParameters": {
                 "method.response.header.Access-Control-Allow-Origin": "'*'",
-                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
+                "method.response.header.Access-Control-Allow-Headers": "'Access-Control-Allow-Origin,Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
                 "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,POST'"
               },
               "ResponseTemplates": {
@@ -264,20 +264,20 @@
           ]
         },
         "ResourceId": {
-          "Ref": "ApiGatewayResourceSyncdata"
+          "Ref": "ApiGatewayResourceAbresql"
         },
         "RestApiId": {
           "Ref": "ApiGatewayRestApi"
         }
       }
     },
-    "ApiGatewayMethodSyncdataPost": {
+    "ApiGatewayMethodAbresqlPost": {
       "Type": "AWS::ApiGateway::Method",
       "Properties": {
         "HttpMethod": "POST",
         "RequestParameters": {},
         "ResourceId": {
-          "Ref": "ApiGatewayResourceSyncdata"
+          "Ref": "ApiGatewayResourceAbresql"
         },
         "RestApiId": {
           "Ref": "ApiGatewayRestApi"
@@ -317,7 +317,7 @@
         "SyncdataLambdaPermissionApiGateway"
       ]
     },
-    "ApiGatewayDeployment1697138762327": {
+    "ApiGatewayDeployment1698882180494": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -326,8 +326,8 @@
         "StageName": "prod"
       },
       "DependsOn": [
-        "ApiGatewayMethodSyncdataOptions",
-        "ApiGatewayMethodSyncdataPost"
+        "ApiGatewayMethodAbresqlOptions",
+        "ApiGatewayMethodAbresqlPost"
       ]
     },
     "SyncdataLambdaPermissionApiGateway": {
@@ -374,16 +374,16 @@
         "Ref": "ServerlessDeploymentBucket"
       },
       "Export": {
-        "Name": "sls-digifixsyncdata-prod-ServerlessDeploymentBucketName"
+        "Name": "sls-abresqldemo-prod-ServerlessDeploymentBucketName"
       }
     },
     "SyncdataLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "SyncdataLambdaVersionBqStXqU7I2LJcAoOgt3ubNgYVPuNEJ1d1cDPTZs240"
+        "Ref": "SyncdataLambdaVersionGivXYxQIQIzx88jlxwJWgF2g3PYHVRvBc0T1fGUvsog"
       },
       "Export": {
-        "Name": "sls-digifixsyncdata-prod-SyncdataLambdaFunctionQualifiedArn"
+        "Name": "sls-abresqldemo-prod-SyncdataLambdaFunctionQualifiedArn"
       }
     },
     "ServiceEndpoint": {
@@ -409,7 +409,7 @@
         ]
       },
       "Export": {
-        "Name": "sls-digifixsyncdata-prod-ServiceEndpoint"
+        "Name": "sls-abresqldemo-prod-ServiceEndpoint"
       }
     }
   }

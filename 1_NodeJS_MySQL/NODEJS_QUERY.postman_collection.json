@@ -1,0 +1,213 @@
+{
+	"info": {
+		"_postman_id": "8b8e76d8-c2c7-40aa-9e43-e86a4e8aa3e9",
+		"name": "NODEJS_QUERY",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5500190"
+	},
+	"item": [
+		{
+			"name": "ABRESQL - Departments",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Api-Key",
+						"value": "kXmls3iiqcacc1Y1IGnO0405GHtxopFw96r5PKiv",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"sql\": \"SELECT * FROM employees.departments\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}abresql",
+					"host": [
+						"{{URL}}abresql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ABRESQL - Department Emp",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "kXmls3iiqcacc1Y1IGnO0405GHtxopFw96r5PKiv",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"sql\": \"SELECT * FROM employees.dept_emp LIMIT 100\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}abresql",
+					"host": [
+						"{{URL}}abresql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ABRESQL - Department Manager",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "kXmls3iiqcacc1Y1IGnO0405GHtxopFw96r5PKiv",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"sql\": \"SELECT * FROM employees.dept_manager\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}abresql",
+					"host": [
+						"{{URL}}abresql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ABRESQL - Employees",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "kXmls3iiqcacc1Y1IGnO0405GHtxopFw96r5PKiv",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"sql\": \"select * from employees LIMIT 100\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}abresql",
+					"host": [
+						"{{URL}}abresql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ABRESQL - Salaries",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "kXmls3iiqcacc1Y1IGnO0405GHtxopFw96r5PKiv",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"sql\": \"SELECT * FROM employees.salaries LIMIT 100\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}abresql",
+					"host": [
+						"{{URL}}abresql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ABRESQL - Titles",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "kXmls3iiqcacc1Y1IGnO0405GHtxopFw96r5PKiv",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"sql\": \"SELECT * FROM employees.titles LIMIT 100\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}abresql",
+					"host": [
+						"{{URL}}abresql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ABRESQL - Dashboard",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "kXmls3iiqcacc1Y1IGnO0405GHtxopFw96r5PKiv",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"sql\": \"SELECT count(*) FROM employees.employees\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}abresql",
+					"host": [
+						"{{URL}}abresql"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

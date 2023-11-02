@@ -127,5 +127,10 @@ source load_salaries3.dump ;
 source show_elapsed.sql ;
 
 create user 'breno'@'%' IDENTIFIED WITH mysql_native_password BY 'password';
+grant all PRIVILEGES on departments to 'breno'@'%';
+grant all PRIVILEGES on dept_emp to 'breno'@'%';
+grant all PRIVILEGES on dept_manager to 'breno'@'%';
 grant all PRIVILEGES on employees to 'breno'@'%';
+grant all PRIVILEGES on salaries to 'breno'@'%';
+grant all PRIVILEGES on titles to 'breno'@'%';
 FLUSH PRIVILEGES;
